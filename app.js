@@ -1,10 +1,8 @@
 const Koa = require('koa');
 const app = new Koa();
 const views = require('koa-views');
-const co = require('co');
 const convert = require('koa-convert');
 const json = require('koa-json');
-const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser')();
 const logger = require('koa-logger');
 const cors = require('koa2-cors');
@@ -20,17 +18,17 @@ app.use(convert(logger()));
 app.use(require('koa-static')(__dirname + '/static'));
 
 app.use(views(__dirname + '/views', {
-  extension: 'jade'
+  'extension' : 'jade'
 }));
 
 app.use(cors({
-	exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
-	maxAge: 5,
-	credentials: true,
-	allowMethods: ['GET', 'POST', 'DELETE', 'PUT', "OPTIONS"],
-	allowHeaders: ['Content-Type', 'Authorization', 'Accept']
+	'exposeHeaders' : ['WWW-Authenticate', 'Server-Authorization'],
+	'maxAge' : 5,
+	'credentials' : true,
+	'allowMethods' : ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
+	'allowHeaders' : ['Content-Type', 'Authorization', 'Accept']
 }));
-app.use(router(app))
+app.use(router(app));
 
 // logger
 app.use(async (ctx, next) => {
@@ -43,7 +41,7 @@ app.use(async (ctx, next) => {
 // response
 
 app.on('error', function(err, ctx){
-  console.log(err)
+  console.log(err);
   logger.error('server error', err, ctx);
 });
 

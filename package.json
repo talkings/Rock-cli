@@ -6,7 +6,11 @@
     "start": "./node_modules/.bin/nodemon bin/run",
     "koa": "./node_modules/.bin/runkoa bin/www",
     "pm2": "pm2 start bin/run ",
-		"create_mysql_table" : "node ./model/mysql/create.js"
+    "create_mysql_table": "node ./model/mysql/create.js",
+    "eslint" : "eslint --ext .js --fix middleware model routes"
+  },
+  "bin": {
+    "hello": "hello.js"
   },
   "dependencies": {
     "co": "^4.6.0",
@@ -28,6 +32,8 @@
     "sequelize": "^3.30.4"
   },
   "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.19.0",
     "mysql": "^2.13.0",
     "mysql2": "^1.2.0",
     "nodemon": "^1.8.1"
