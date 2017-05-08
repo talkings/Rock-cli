@@ -1,10 +1,21 @@
 {
-  "name": "koa2-servers-cli",
-  "version": "1.0.0",
+  "name": "rock",
+  "version": "0.0.1",
+  "description" : "A scaffold based on koa2",
+  "keywords" : [
+  	"koa2",
+  	"mysql",
+  	"sequelize",
+  	"eslint" 
+  ],
   "private": true,
   "scripts": {},
   "bin": {
     "hello": "./bin/rock.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/talkings/koa2-servers-cli"
   },
   "dependencies": {
     "colors": "^1.1.2"
@@ -15,5 +26,13 @@
     "copy": "^0.3.0",
     "eslint": "^3.19.0",
     "nodemon": "^1.8.1"
-  }
+  },
+  "engines": {
+    "node": ">=7.0"
+  },
+  "licenses": [
+    {
+      "type": "TONY"
+    }
+  ]
 }

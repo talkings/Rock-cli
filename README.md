@@ -1,4 +1,4 @@
-# koa-generator
+# ROCK
 
 ## Installation
 
@@ -10,7 +10,9 @@ $ npm install -g koa2-servers-cli
 Install dependencies:
 
 ```bash
-$ npm install
+$ rock -a <name>
+or
+$ rock --add <name>
 ```
 Start your Koa app at http://localhost:3000/:
 
