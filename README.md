@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-$ npm install -g koa2-servers-cli
+$ npm install -g rock
 ```
 ## Quick Start
 

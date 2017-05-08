@@ -11,7 +11,7 @@
   "private": true,
   "scripts": {},
   "bin": {
-    "hello": "./bin/rock.js"
+    "rock": "./bin/rock.js"
   },
   "repository": {
     "type": "git",
