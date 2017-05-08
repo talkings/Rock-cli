@@ -5,6 +5,8 @@ var path = require("path");
 var fs = require('fs');
 var copy = require('copy');
 var colors = require('colors');
+//fs 扩展支持promise
+fsToPromise(['readdir', 'mkdir', 'exists', 'stat']);
 
 colors.setTheme({  
     silly: 'rainbow',  
@@ -36,6 +38,33 @@ function helpInformation() {
 	console.log('');
 };
 
+/**
+ * fs api support promise
+ * @param {Object} methods
+ */
+function fsToPromise(methods){
+	methods.forEach((item)=>{
+		global[item] = function(path){
+			return new Promise((resolve, reject)=>{
+				if(item === "exists"){
+					fs[item](path, (dst)=>{
+						resolve(dst);
+					})		
+				}else{
+					fs[item](path, (err, dst)=>{
+						if(err){
+							reject(err);
+							return false;
+						};
+						resolve(dst);
+					})	
+				}
+				
+			});
+		}
+	});
+};
+
 //文件夹复制
 function copyForder(fromPath, toPath) {
 	/*
@@ -45,57 +74,69 @@ function copyForder(fromPath, toPath) {
 	 */
 
 	var copy = function(src, dst) {
+		
 		// 读取目录中的所有文件/目录
-		fs.readdir(src, function(err, paths) {
-			if(err) {
-				throw err;
-			};
-			paths.forEach(function(path) {
+		return global.readdir(src).then((paths)=>{
+			let files = paths.map(function(path) {
 				var _src = src + '/' + path,
 					_dst = dst + '/' + path,
 					readable, writable;
-				fs.stat(_src, function(err, st) {
-					if(err) {
-						throw err;
-					}
-					// 判断是否为文件
-					if(st.isFile()) {
-						// 创建读取流
-						readable = fs.createReadStream(_src);
-						// 创建写入流
-						writable = fs.createWriteStream(_dst);
-						// 通过管道来传输流
-						readable.pipe(writable);
-					}
-					// 如果是目录则递归调用自身
-					else if(st.isDirectory()) {
-						exists(_src, _dst, copy);
-					}
-				});
+				return global.stat(_src).then((st) => {
+						console.log("create :	".green +_dst);
+						// 判断是否为文件
+						if(st.isFile()) {
+							// 创建读取流
+							readable = fs.createReadStream(_src);
+							// 创建写入流
+							writable = fs.createWriteStream(_dst);
+							// 通过管道来传输流
+							readable.pipe(writable);
+						}
+						// 如果是目录则递归调用自身
+						else if(st.isDirectory()) {
+							return exist(_src, _dst, copy);
+						}
+					}).catch((err)=>{
+						console.log("error:	"+err);
+					})
 			});
-		});
+			return Promise.all(files)
+			//process.abort();
+			//console.log('END'.yellow);
+		}).catch((err)=>{
+			console.log("error:	"+err);
+		})
 	};
 
 	// 在复制目录前需要判断该目录是否存在，不存在需要先创建目录
-	var exists = function(src, dst, callback) {
-		fs.exists(dst, function(exists) {
+	var exist = function(src, dst, callback) {
+		return global.exists(dst).then((exists)=>{
 			// 已存在
 			if(exists) {
-				callback(src, dst);
+				return callback(src, dst).then(()=>{})
 			}
 			// 不存在
 			else {
-				fs.mkdir(dst, function() {
-					callback(src, dst);
+				return global.mkdir(dst).then(()=>{
+					return callback(src, dst).then(()=>{})
 				});
 			}
+		}).catch((err)=>{
+			console.log("error:	"+err);
 		});
 	};
 	
-	
-	
+	//process.abort();
+	//console.log("create :	".green+toPath)
 	// 复制目录
-	exists(fromPath, toPath, copy);
+	exist(fromPath, toPath, copy).then(()=>{
+		//监听操作成功]
+		console.log("");
+		console.log("Project to create success".yellow);
+		//进程中断
+		process.abort();
+		
+	})
 }
 
 /**
@@ -103,30 +144,20 @@ function copyForder(fromPath, toPath) {
  * @param {string} projectname
  */
 function createProject(projectname) {
-	fs.mkdir(path.resolve(process.cwd() + "/" + projectname), 0777, function(err) {
-		if(err) {
-			console.log(err);
-		} else {
-			
-			//导出文件源目录
-			let from_path = path.resolve(__dirname, '../template/');
-			//输出目录
-			let to_path = path.resolve(process.cwd() + "/" + projectname+"/");
-			//监听文件夹变化
-			watchfile(to_path);
-			copyForder(from_path, to_path);
-		}
-	})
+	var s = global.mkdir(path.resolve(process.cwd() + "/" + projectname)).then((data)=>{
+		//导出文件源目录
+		let from_path = path.resolve(__dirname, '../template/');
+		//输出目录
+		let to_path = path.resolve(process.cwd() + "/" + projectname+"/");
+		copyForder(from_path, to_path);
+	}).catch((err)=>{
+		console.log("error:	"+err);
+	});
 }
 
-function watchfile(file){
-	fs.watch(file, function(err, filename){
-		console.log("create :  ".green + filename);
-	})
-};
 /**
  * 查看版本号
  */
 function getVersion() {
-	console.log("v0.0.1");
+	console.log("v0.0.3");
 }
