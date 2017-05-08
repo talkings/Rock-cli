@@ -8,7 +8,7 @@
   	"sequelize",
   	"eslint" 
   ],
-  "private": true,
+  "private": false,
   "scripts": {},
   "bin": {
     "rock": "./bin/rock.js"
