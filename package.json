@@ -1,5 +1,5 @@
 {
-  "name": "rock",
+  "name": "rock-cli",
   "version": "0.0.1",
   "description" : "A scaffold based on koa2",
   "keywords" : [
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/talkings/Rock"
+    "url": "https://github.com/talkings/Rock-cli"
   },
   "dependencies": {
     "colors": "^1.1.2"
