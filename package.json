@@ -1,6 +1,6 @@
 {
   "name": "rock-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description" : "A scaffold based on koa2",
   "keywords" : [
   	"koa2",
@@ -20,7 +20,7 @@
   "dependencies": {
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "copy": "^0.3.0",
+    "copy": "^0.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
