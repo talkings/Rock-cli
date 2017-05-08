@@ -18,12 +18,12 @@
     "url": "https://github.com/talkings/Rock-cli"
   },
   "dependencies": {
-    "colors": "^1.1.2"
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "copy": "^0.3.0",
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
-    "commander": "^2.9.0",
-    "copy": "^0.3.0",
     "eslint": "^3.19.0",
     "nodemon": "^1.8.1"
   },
