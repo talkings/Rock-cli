@@ -1,6 +1,5 @@
 const Koa = require('koa');
 const app = new Koa();
-const views = require('koa-views');
 const convert = require('koa-convert');
 const json = require('koa-json');
 const bodyparser = require('koa-bodyparser')();
@@ -12,14 +11,9 @@ const res = require('./middleware/response.js');
 
 // middlewares
 app.use(res);
-app.use(convert(bodyparser));
+app.use(bodyparser);
 app.use(convert(json()));
-app.use(convert(logger()));
-app.use(require('koa-static')(__dirname + '/static'));
-
-app.use(views(__dirname + '/views', {
-  'extension' : 'jade'
-}));
+app.use(logger());
 
 app.use(cors({
 	'exposeHeaders' : ['WWW-Authenticate', 'Server-Authorization'],
@@ -28,6 +22,7 @@ app.use(cors({
 	'allowMethods' : ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
 	'allowHeaders' : ['Content-Type', 'Authorization', 'Accept']
 }));
+
 app.use(router(app));
 
 // logger

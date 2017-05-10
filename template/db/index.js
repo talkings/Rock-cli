@@ -1,15 +1,15 @@
-import Sequelize from 'sequelize';
-import Config from './config';
-import fs from 'fs';
-import path from 'path';
+const Sequelize = require('sequelize');
+const { mysql } = require('../config/db-config');
+const fs = require('fs');
+const path = require('path');
 
 /**
  * MYSQL CONNECT
  */
 
 //创建实例
-const sequelize = new Sequelize(Config.database, Config.username, Config.password, {
-    'host' : Config.host,
+const sequelize = new Sequelize(mysql.database, mysql.username, mysql.password, {
+    'host' : mysql.host,
     'dialect' : 'mysql',
     'pool' : {
         'max' : 5,
@@ -28,11 +28,11 @@ sequelize.authenticate().then((err) => {
 }).catch((err) => {
     console.log('mysql Unable to connect to the database:' + err);
 });
-
-fs.readdirSync(__dirname + '/schema').filter(function (file) {
+//读取文件目录
+fs.readdirSync(path.join(__dirname, '../schema')).filter(function (file) {
     return (file.indexOf('.') !== 0);
 }).forEach(function (file) {
-    let model = sequelize['import'](path.join(__dirname + '/schema', file));
+    let model = sequelize['import'](path.join(__dirname, '../schema/'+ file));
     db[model.name] = model;
 });
 

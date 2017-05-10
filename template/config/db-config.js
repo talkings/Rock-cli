@@ -1,7 +1,7 @@
 /**
  * MYSQL Configure
  */
-module.exports =  {
+exports.mysql =  {
 	//数据库
 	'database' : 'test',
 	//用户名

@@ -3,7 +3,7 @@
 ## description
 
 ```bash
-目标搭建基于node koa2的一款企业级servers脚手架 
+基于node koa2的一款servers脚手架 
 ```
 
 ## Installation
@@ -16,9 +16,9 @@ $ npm install -g koa2-servers-cli
 Install dependencies:
 
 ```bash
-$ rock -a <name>
+$ rock -a <project-name>
 or
-$ rock --add <name>
+$ rock --add <project-name>
 ```
 Start your Koa app at http://localhost:3000/:
 
