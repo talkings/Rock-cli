@@ -28,6 +28,7 @@ sequelize.authenticate().then((err) => {
 }).catch((err) => {
     console.log('mysql Unable to connect to the database:' + err);
 });
+
 //读取文件目录
 fs.readdirSync(path.join(__dirname, '../schema')).filter(function (file) {
     return (file.indexOf('.') !== 0);

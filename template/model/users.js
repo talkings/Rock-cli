@@ -1,11 +1,11 @@
 //MYSQL 对象关系映射
 import db from '../db';
 
-const User = {};
+const Users = {};
 /**
  * 查询用户信息
  */
-User.getUserInfo = async( ctx ) => {
+Users.getUserInfo = async ( ctx ) => {
 	try {
 		const data = await db.user.findAll({
 			'attributes' : ['id']
@@ -20,7 +20,7 @@ User.getUserInfo = async( ctx ) => {
 /**
  * 创建用户信息
  */
-User.addUserInfo = async( ctx ) => {
+Users.addUserInfo = async( ctx ) => {
 	try {
 		const data = await db.user.create({
 			'username' : 'username',
@@ -30,13 +30,12 @@ User.addUserInfo = async( ctx ) => {
 	} catch (e) {
 		ctx.error(500, e);
 	}
-
 };
 
 /**
  * 修改用户信息
  */
-User.setUserInfo =  async( ctx ) => {
+Users.setUserInfo =  async( ctx ) => {
 	try {
 		const data = await db.user.findOne({
 			'attributes': ['id', 'username'],
@@ -55,4 +54,4 @@ User.setUserInfo =  async( ctx ) => {
 
 
 
-export default User;
+export default Users;

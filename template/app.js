@@ -7,9 +7,8 @@ const logger = require('koa-logger');
 const cors = require('koa2-cors');
 const router = require('./routes/');
 const res = require('./middleware/response.js');
-
-
 // middlewares
+
 app.use(res);
 app.use(bodyparser);
 app.use(convert(json()));
@@ -22,6 +21,7 @@ app.use(cors({
 	'allowMethods' : ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
 	'allowHeaders' : ['Content-Type', 'Authorization', 'Accept']
 }));
+
 
 app.use(router(app));
 
