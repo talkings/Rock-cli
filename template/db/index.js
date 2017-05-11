@@ -30,10 +30,10 @@ sequelize.authenticate().then((err) => {
 });
 
 //读取文件目录
-fs.readdirSync(path.join(__dirname, '../schema')).filter(function (file) {
+fs.readdirSync(path.join(__dirname, './schema')).filter(function (file) {
     return (file.indexOf('.') !== 0);
 }).forEach(function (file) {
-    let model = sequelize['import'](path.join(__dirname, '../schema/'+ file));
+    let model = sequelize['import'](path.join(__dirname, './schema/'+ file));
     db[model.name] = model;
 });
 

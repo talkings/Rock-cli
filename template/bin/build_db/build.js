@@ -17,12 +17,12 @@ const sequelize = new Sequelize(mysql.database, mysql.username, mysql.password, 
     }
 });
 
-fs.readdirSync(path.join(__dirname, '../../schema'))
+fs.readdirSync(path.join(__dirname, '../../db/schema'))
     .filter(function(file) {
         return (file.indexOf('.') !== 0);
     })
     .forEach(function(file) {
-        let model = sequelize['import'](path.join(__dirname, '../../schema/'+file));
+        let model = sequelize['import'](path.join(__dirname, '../../db/schema/'+file));
         //模型及关联关系同步到数据库
         sequelize.sync().then(() => {
             const filename =  file.split('.')[0];

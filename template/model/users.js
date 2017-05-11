@@ -1,16 +1,17 @@
 //MYSQL 对象关系映射
 import db from '../db';
 
-const Users = {};
+const User = {};
 /**
  * 查询用户信息
  */
-Users.getUserInfo = async ( ctx ) => {
+User.getUserInfo = async ( ctx ) => {
 	try {
 		const data = await db.user.findAll({
 			'attributes' : ['id']
 		});
-		ctx.success(data, 'success');
+		return data;
+
 	} catch (e) {
 		ctx.error(500, e);
 	}
@@ -20,13 +21,14 @@ Users.getUserInfo = async ( ctx ) => {
 /**
  * 创建用户信息
  */
-Users.addUserInfo = async( ctx ) => {
+User.addUserInfo = async( ctx ) => {
 	try {
 		const data = await db.user.create({
 			'username' : 'username',
 			'password' : 123456
 		});
-		ctx.success(data, 'success');
+		return data;
+
 	} catch (e) {
 		ctx.error(500, e);
 	}
@@ -35,7 +37,7 @@ Users.addUserInfo = async( ctx ) => {
 /**
  * 修改用户信息
  */
-Users.setUserInfo =  async( ctx ) => {
+User.setUserInfo =  async( ctx ) => {
 	try {
 		const data = await db.user.findOne({
 			'attributes': ['id', 'username'],
@@ -45,7 +47,8 @@ Users.setUserInfo =  async( ctx ) => {
 		});
 		data.username = 'qianxiang.fang';
 		let result = await data.save();
-		ctx.success(result, 'success');
+		return result;
+		
 	} catch (e) {
 		ctx.body = e;
 	}
@@ -54,4 +57,4 @@ Users.setUserInfo =  async( ctx ) => {
 
 
 
-export default Users;
+export default User;
