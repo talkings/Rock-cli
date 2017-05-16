@@ -1,6 +1,7 @@
 import fs from 'fs';
+import tools from '../utils/tools.js';
 
-const models = {};
+const controller = {};
 //读取目录下文件列表
 const fileList = fs.readdirSync( __dirname );
 //遍历注册路由
@@ -11,8 +12,14 @@ fileList.forEach(( filename ) => {
 		let child_model = require(__dirname +'/'+ filename);
 		if (filename.indexOf('.') > -1){
 			let name = filename.split('.')[0];
-			models[name] = child_model;
+			//继承工具类
+			for(let key in child_model){
+				if(typeof(child_model[key]) === 'function'){
+					child_model[key] = child_model[key].bind( Object.freeze(tools) );
+				};
+			};
+			controller[name] = child_model;
 		}
 	}
 });	
-export default  models;
+export default  controller;

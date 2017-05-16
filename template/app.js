@@ -1,9 +1,9 @@
-const Koa = require('koa');
-const app = new Koa();
-const logger = require('koa-logger');
+import Koa from 'koa';
+import logger from 'koa-logger';
 
+const app = new Koa();
 // middlewares
-const middleware = require('./middleware/');
+const middleware = require('./app/middleware/');
 app.use(middleware(app));
 
 // logger
@@ -15,11 +15,10 @@ app.use(async (ctx, next) => {
 });
 
 // response
-
 app.on('error', function(err, ctx){
   console.log(err);
   logger.error('server error', err, ctx);
 });
 
 
-module.exports = app;
+export default app;
