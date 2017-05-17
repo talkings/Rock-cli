@@ -1,5 +1,5 @@
-import Koa from 'koa';
-import logger from 'koa-logger';
+const Koa = require('koa');
+const logger = require('koa-logger');
 
 const app = new Koa();
 // middlewares
@@ -21,4 +21,4 @@ app.on('error', function(err, ctx){
 });
 
 
-export default app;
+module.exports = app;

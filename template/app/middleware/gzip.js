@@ -1,8 +1,8 @@
-import zlib from 'zlib';
+const zlib = require('zlib');
 /**
  * data Gzip handler
  */
-export default async(ctx, next) => {
+module.exports = async(ctx, next) => {
 	
 	await next();
 	

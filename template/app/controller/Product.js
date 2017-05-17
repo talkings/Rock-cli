@@ -1,11 +1,18 @@
 //MYSQL 对象关系映射
 const model = require('../models');
 
-const User = {
+class Product {
+	
+	constructor (){
+		this.a = 1;
+	}
 	/**
 	 * 查询用户信息
 	 */
 	async getUserInfo ( ctx ) {
+		
+		console.log(ctx)
+		console.log(this.a)
 		try {
 			//console.log(ctx.token({user: '123'}))
 			const data = await model.user.findAll({
@@ -15,7 +22,7 @@ const User = {
 		} catch (e){
 			this.tools_res.error(ctx, 500, e);
 		}
-	},
+	}
 	
 	async geProxytUserInfo ( ctx ) {
 		try {
@@ -25,7 +32,7 @@ const User = {
 		}catch(e){
 			this.tools_res.error(500, e);
 		}
-	},
+	}
 	
 	/**
 	 * 创建用户信息
@@ -40,7 +47,7 @@ const User = {
 		} catch (e){
 			this.tools_res.error(ctx, 500, e);
 		}
-	},
+	}
 	
 	/**
 	 * 修改用户信息
@@ -62,7 +69,9 @@ const User = {
 			this.tools_res.error(500, e);
 		}
 	}
-};
+	
+}
 
 
-module.exports = User;
+
+module.exports = Product;

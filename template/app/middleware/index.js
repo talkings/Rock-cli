@@ -1,16 +1,16 @@
-import convert from 'koa-convert';
-import json from 'koa-json';
-import bodyparser from 'koa-bodyparser';
-import cors from 'koa2-cors';
-import logger from 'koa-logger';
-import router from '../routes/';
-import proxy from './proxy.js';
-import gzip from './gzip.js';
-import oauth from './oauth.js';
-import favicon from 'koa-favicon';
-import path from 'path';
+const convert = require('koa-convert');
+const json = require('koa-json');
+const bodyparser = require('koa-bodyparser');
+const cors = require('koa2-cors');
+const logger = require('koa-logger');
+const router = require('../routes/');
+const proxy = require('./proxy.js');
+const gzip = require('./gzip.js');
+const oauth = require('./oauth.js');
+const favicon = require('koa-favicon');
+const path = require('path');
 
-export default ( app ) => {
+module.exports =  ( app ) => {
     
   	app.use(gzip);
     app.use(proxy);

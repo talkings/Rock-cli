@@ -1,6 +1,6 @@
 const request = require('request');
 
-export default  async ( ctx, next ) => {
+module.exports = async ( ctx, next ) => {
 
     class Proxy {
         

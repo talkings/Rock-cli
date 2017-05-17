@@ -1,4 +1,4 @@
-export default {
+module.exports = {
 	//秘钥
 	'secret' : 'languang',
 	//加密方式

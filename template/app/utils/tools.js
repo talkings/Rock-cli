@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import auth from '../../config/auth-config.js';
+const jwt = require('jsonwebtoken');
+const auth = require('../../config/auth-config.js');
 
 const tools_token = {
 	/**
@@ -64,6 +64,6 @@ const tools_res = {
 		};
 	}
 }
-export default {
+module.exports = {
 	tools_token, tools_res
 }

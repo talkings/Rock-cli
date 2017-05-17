@@ -1,4 +1,4 @@
-import fs from 'fs';
+const fs = require('fs');
 
 module.exports  = (app) => {
 	//读取目录下文件列表
