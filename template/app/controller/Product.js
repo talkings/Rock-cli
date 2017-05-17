@@ -1,14 +1,14 @@
 //MYSQL 对象关系映射
 const model = require('../models');
-const { tools_token, tools_res } = require('../utils/tools.js');
+const { tools_res } = require('../utils/');
 
 class Product {
 	/**
 	 * 查询用户信息
 	 */
 	static async getUserInfo ( ctx ) {
-		console.log(this);
-		try 
+		
+		try { 
 			const data = await model.user.findAll({
 				'attributes' : ['id']
 			});
@@ -64,7 +64,7 @@ class Product {
 		}
 	}
 	
-};
+}
 
 
 

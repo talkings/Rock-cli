@@ -1,6 +1,6 @@
 //MYSQL 对象关系映射
 const model = require('../models');
-const { tools_token, tools_res } = require('../utils/tools.js');
+const { tools_token, tools_res } = require('../utils/');
 
 const User = {
 	/**

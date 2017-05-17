@@ -12,23 +12,23 @@ module.exports = async(ctx, next) => {
 	ctx.set({
 		'Content-Type': 'application/json'
 	});
-	if(acceptEncoding.match(/\bgzip\b/)) {
+	if (acceptEncoding.match(/\bgzip\b/)) {
 		ctx.set({
 			'Content-Encoding': 'gzip'
 		});
-		if(ctx.body){
+		if (ctx.body){
 			// gzip
 			let buf = await zlib.gzipSync(ctx.body);
 			ctx.body = buf;
 		}
 		
-	} else if(acceptEncoding.match(/\bdeflate\b/)) {
+	} else if (acceptEncoding.match(/\bdeflate\b/)) {
 		ctx.set({
 			'Content-Encoding': 'deflate'
 		});
 		// deflate
 		let buf = await zlib.deflateSync(ctx.body);
-		if(ctx.body){
+		if (ctx.body){
 			ctx.body = buf;
 		}
 		
