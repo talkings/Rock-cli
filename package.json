@@ -1,6 +1,6 @@
 {
   "name": "rock-cli",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description" : "A scaffold based on koa2",
   "keywords" : [
   	"koa2",
@@ -11,7 +11,7 @@
   "private": false,
   "scripts": {},
   "bin": {
-    "rock": "./bin/rock.js"
+    "rock": "bin/rock.js"
   },
   "repository": {
     "type": "git",
@@ -23,9 +23,6 @@
     "copy": "^0.3.0"
   },
   "devDependencies": {
-    "babel-eslint": "^6.1.2",
-    "eslint": "^3.19.0",
-    "nodemon": "^1.8.1"
   },
   "engines": {
     "node": ">=7.0"

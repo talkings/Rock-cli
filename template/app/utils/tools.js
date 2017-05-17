@@ -8,7 +8,7 @@ const tools_token = {
 	 * @param expiresIn 到期时间
 	 * @return new token
 	 */
-	createToken : (ctx, data, expiresIn) => {
+	'createToken' : (ctx, data, expiresIn) => {
 		/**
 		 * 生成口令
 		 * @存储的相关信息
@@ -32,7 +32,7 @@ const tools_token = {
 	 * 效验token
 	 * @paran token
 	 */
-	checkToken : (ctx, token) => {
+	'checkToken' : (ctx, token) => {
 		try {
 			let decoded = jwt.verify(token, auth.secret);
 			return decoded;
@@ -48,7 +48,7 @@ const tools_token = {
  */
 const tools_res = {
 	
-	success : (ctx, result, msg ) => {
+	'success' : (ctx, result, msg ) => {
 		ctx.body = {
 			'code' : 200,
 			'data' : result,
@@ -56,7 +56,7 @@ const tools_res = {
 		};
 	},
 	
-	error : (ctx,  code, msg ) => {
+	'error' : (ctx,  code, msg ) => {
 		ctx.body = {
 			'code' : code,
 			'data' : null,

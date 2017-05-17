@@ -1,5 +1,6 @@
 //MYSQL 对象关系映射
 const model = require('../models');
+const { tools_token, tools_res } = require('../utils/tools.js');
 
 const User = {
 	/**
@@ -11,9 +12,9 @@ const User = {
 			const data = await model.user.findAll({
 				'attributes' : ['id']
 			});
-			this.tools_res.success(ctx, data, 'success');
+			tools_res.success(ctx, data, 'success');
 		} catch (e){
-			this.tools_res.error(ctx, 500, e);
+			tools_res.error(ctx, 500, e);
 		}
 	},
 	
@@ -21,9 +22,9 @@ const User = {
 		try {
 			const fn = new ctx.Proxy({});
 			const data = await fn.request();
-			this.tools_res.success(data, 'success');
-		}catch(e){
-			this.tools_res.error(500, e);
+			tools_res.success(data, 'success');
+		} catch (e){
+			tools_res.error(500, e);
 		}
 	},
 	
@@ -36,9 +37,9 @@ const User = {
 				'username' : 'username',
 				'password' : 123456
 			});
-			this.tools_res.success(ctx, data, 'success');
+			tools_res.success(ctx, data, 'success');
 		} catch (e){
-			this.tools_res.error(ctx, 500, e);
+			tools_res.error(ctx, 500, e);
 		}
 	},
 	
@@ -46,7 +47,7 @@ const User = {
 	 * 修改用户信息
 	 */
 	async setUserInfo ( ctx ) {
-		let data = null, result = null;
+		let result = null;
 		try {
 			const data = await model.user.findOne({
 				'attributes': ['id', 'username'],
@@ -56,10 +57,10 @@ const User = {
 			});
 			data.username = 'qianxiang.fang';
 			result = await data.save();
-			this.tools_res.success(result, 'success');
+			tools_res.success(ctx, result, 'success');
 			
 		} catch (e){
-			this.tools_res.error(500, e);
+			tools_res.error(ctx, 500, e);
 		}
 	}
 };

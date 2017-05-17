@@ -5,7 +5,6 @@ const { Product } = require('../controller/');
 const routers = new router({
 	'prefix': '/product'
 });
-
 routers.get('/search', Product.getUserInfo)
 	.get('/proxy', Product.geProxytUserInfo)
 	.post('/create', Product.getUserInfo)
