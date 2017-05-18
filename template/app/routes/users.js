@@ -6,9 +6,21 @@ const routers = new router({
 	'prefix': '/users'
 });
 
-routers.get('/search', Users.getUserInfo)
-	.get('/proxy', Users.geProxytUserInfo)
-	.post('/create', Users.getUserInfo)
-	.put('/update', Users.setUserInfo);
+routers.get('/search', async ( ctx ) => {
+	const data = await Users.getUserInfo( ctx );
+	ctx.throw(data, 'success');
+})
+	.get('/proxy', async ( ctx ) => {
+		const data = await Users.geProxytUserInfo( ctx );	
+		ctx.throw(data, 'success');
+	})
+	.post('/create', async ( ctx ) => {
+		const data = await Users.getUserInfo( ctx );
+		ctx.throw(data, 'success');
+	})
+	.put('/update', async ( ctx ) => {
+		const data = await Users.setUserInfo( ctx );
+		ctx.throw(data, 'success');	
+	});
 
 module.exports = routers;

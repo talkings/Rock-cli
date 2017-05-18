@@ -43,4 +43,4 @@ const tools_token = {
 	}
 };
 
-module.exports = tools_token
+module.exports = tools_token;

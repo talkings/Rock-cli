@@ -4,16 +4,16 @@ const bodyparser = require('koa-bodyparser');
 const cors = require('koa2-cors');
 const logger = require('koa-logger');
 const router = require('../routes/');
-const proxy = require('./proxy.js');
 const gzip = require('./gzip.js');
 const oauth = require('./oauth.js');
+const res = require('./res.js');
 const favicon = require('koa-favicon');
 const path = require('path');
 
 module.exports =  ( app ) => {
     
-  	app.use(gzip);
-    app.use(proxy);
+	app.use(gzip);
+    app.use(res);  
 	app.use(bodyparser());
     app.use(convert(json()));
     app.use(favicon(path.join(__dirname, '../../favicon.ico')));
