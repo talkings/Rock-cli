@@ -159,5 +159,5 @@ function createProject(projectname) {
  * 查看版本号
  */
 function getVersion() {
-	console.log("v0.0.8");
+	console.log("v0.0.9");
 }
