@@ -1,6 +1,6 @@
 {
   "name": "rock-cli",
-  "version": "0.0.9",
+  "version": "0.1.1",
   "description" : "A scaffold based on koa2",
   "keywords" : [
   	"koa2",

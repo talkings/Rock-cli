@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { mysql } = require('../../config/db-config');
+const { mysql } = require('../../config/config-db');
 const fs = require('fs');
 const path = require('path');
 
@@ -42,8 +42,11 @@ Object.keys(db).forEach(function (modelName) {
         db[modelName].associate(db);
     }
 });
+//数据表不存在的情况下自动创建数据表
+sequelize.sync();
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+
 
 module.exports = db;

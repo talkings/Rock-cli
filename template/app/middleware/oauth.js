@@ -8,20 +8,20 @@ module.exports = async (ctx, next) => {
 	
 	//过滤path
 	if (ctx.req.url.indexOf('users') > -1) {
-		try{
+		try {
 			let decoded = jwt.verify('111111111111111', auth.secret);
-			if(!decoded){
+			if (!decoded){
 				ctx.body = {
-					"data" : null,
-					"code" : 201
-				}
+					'data' : null,
+					'code' : 201
+				};
 			}
-		}catch(e){
+		} catch (e){
 			ctx.body = e;
 		}
 		
 		
-	}else{
+	} else {
 		await next();
 	}
 

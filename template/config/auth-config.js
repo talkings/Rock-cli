@@ -3,4 +3,4 @@ module.exports = {
 	'secret' : 'languang',
 	//加密方式
 	'algorithm' : 'HS512'
-}
+};
