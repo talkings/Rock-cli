@@ -1,11 +1,7 @@
 module.exports = ( app ) => {
 	const User = {
-		/**
-		 * 查询用户信息
-		 */
-		getUserInfo () {
-			const data = app.model.user.findAll();
-			return data;
+		async addUserInfo(options) {
+			return app.model.postgresql.user.create(options);
 		}
 	};
 	return User;

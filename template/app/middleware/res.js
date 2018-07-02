@@ -19,13 +19,13 @@ module.exports = () => {
 			};
 		};
 
-		ctx.throw = (result) => {
-			if (!result) {
-				ctx.error(201, 'error');
-			} else {
-				ctx.success(result, 'success');
-			}
-		};
+		// ctx.throw = (result) => {
+		// 	if (!result) {
+		// 		ctx.error(201, 'error');
+		// 	} else {
+		// 		ctx.success(result, 'success');
+		// 	}
+		// };
 		await next();
 	};
 }; 

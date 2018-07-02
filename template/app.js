@@ -1,7 +1,9 @@
 /**
  * 入口执行配置函数
  */
-
 require('./core/main').startCluster({
-    'port' : process.env.PORT || 3000
+    'port': 3002,
+    'version' : 'v1',
+    'protocol' : 'http',
+    'logger' : false
 });

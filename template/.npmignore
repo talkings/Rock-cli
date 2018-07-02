@@ -3,5 +3,4 @@ node_modules
 .project
 README.md
 .vscode
-tmp/*
-!tmp/.gitkeep
+.env

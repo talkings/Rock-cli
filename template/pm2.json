@@ -1,0 +1,13 @@
+{
+    "apps": [
+        {
+            "name": "lark-servers",
+            "script": "app.js",
+            "instances": 4,
+            "instance_var": "INSTANCE_ID",
+            "exec_mode": "cluster"
+        },{
+            "node-args": "--max-old-space-size=4096"
+        }
+    ]
+}

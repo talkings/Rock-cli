@@ -1,0 +1,13 @@
+7868:C 15 Mar 16:33:42.610 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+7868:C 15 Mar 16:33:42.611 # Redis version=4.0.6, bits=64, commit=00000000, modified=0, pid=7868, just started
+7868:C 15 Mar 16:33:42.611 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+7868:M 15 Mar 16:33:42.612 * Increased maximum number of open files to 10032 (it was originally set to 256).
+7868:M 15 Mar 16:33:42.614 * Running mode=standalone, port=6379.
+7868:M 15 Mar 16:33:42.614 # Server initialized
+7868:M 15 Mar 16:33:42.614 * DB loaded from disk: 0.000 seconds
+7868:M 15 Mar 16:33:42.614 * Ready to accept connections
+7868:signal-handler (1521102860) Received SIGINT scheduling shutdown...
+7868:M 15 Mar 16:34:20.399 # User requested shutdown...
+7868:M 15 Mar 16:34:20.399 * Saving the final RDB snapshot before exiting.
+7868:M 15 Mar 16:34:20.401 * DB saved on disk
+7868:M 15 Mar 16:34:20.401 # Redis is now ready to exit, bye bye...

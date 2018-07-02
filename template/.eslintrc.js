@@ -40,7 +40,7 @@ module.exports = {
         //要求或禁止末尾逗号
         "comma-dangle" : 0,
         //要求对象字面量属性名称用引号括起来
-        "quote-props" : 2,
+        // "quote-props" : 1,
         //强制使用一致的反勾号、双引号或单引号
         "quotes" : ["error", "single"],
         //强制在关键字前后使用一致的空格

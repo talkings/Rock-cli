@@ -1,0 +1,12 @@
+apps:
+  - name: lark-servers
+    script   : app.js
+    instances: 4
+    instance_var: INSTANCE_ID
+    exec_mode: cluster
+    max_memory_restart: 1G     ##   内存超过1G之后自动重启
+    log_date_format: "YYY-MM-DD HH:mZ" ## 配置日志的输出格式
+    #env    :
+    #  NODE_ENV: development
+    env_production:
+      NODE_ENV: production
